@@ -16,7 +16,7 @@
 
 
 /*
- * Print out out command line arguments.
+ * Print out command line arguments.
  */
 void printArgs (int argc, char **argv){
   /* Print out arguments count */
@@ -32,7 +32,6 @@ void printArgs (int argc, char **argv){
 		}
   }
 }
-
 
 /*
  * Change the values of an array both char and int.
