@@ -23,10 +23,11 @@ void printArgs (int argc, char **argv){
   printf ("argc=%d\n", argc);
 
   /* Print out each argument */
-  for (int i=0; i<argc; i++){
+	int i=0, j=0;
+  for (i=0; i<argc; i++){
 		/* strlen returns size_t type number, int x=strlen(s) is Ok, but printf needs %zd or %zu */
     printf ("argv[%d] => \"%s\" (len=>%zu)\n", i, argv[i], strlen(argv[i]));
-		for (int j=0; j<strlen(argv[i]); j++){
+		for (j=0; j<strlen(argv[i]); j++){
 			printf ("\targv[%d][%d] => %c (u_int8_t=>%u), &argv[%d][%d] string => \"%s\" (len=%zu)\n",
 			i, j, argv[i][j], argv[i][j], i, j, &argv[i][j], strlen(&argv[i][j]));
 		}
@@ -57,6 +58,7 @@ int changeArrayValues (char *s, int slen, int *d, int dlen){
 void howtoArray (){
   char *s1="abcdefg";
   char s2[8];
+	int i=0;
   printf("char[3] == [][][], a string is an array of char\n");
 
 	/* This is why we use array type of [] */
@@ -68,12 +70,12 @@ void howtoArray (){
 	printf ("/////////////// Array initialization\n");
 	/* An array initilization using memset */
   printf ("s2 without memset (initialization)\n");
-  for (int i=0; i<8; i++){
+  for (i=0; i<8; i++){
     printf("\ts2[%d]=%d\n", i, s2[i]);
   }
   printf ("s2 after memset (initialization)\n");
   memset (s2, 0x00, 8);
-  for (int i=0; i<8; i++){
+  for (i=0; i<8; i++){
     printf("\ts2[%d]=%d\n", i, s2[i]);
   }
 
@@ -105,17 +107,16 @@ void howtoArray (){
 	printf ("/////////////// Traverse/visit each indices/itme by index number\n");
   printf ("print each char of an array by index number\n");
   printf ("\ts1=%s\n", s1);
-  for (int i=0; i<s1len; i++){
+  for (i=0; i<s1len; i++){
     printf ("\t\ts1[%d]=%c(%d)\n", i, s1[i], s1[i]);
   }
   printf ("\ts2=%s\n", s2);
-  for (int i=0; i<s2len; i++){
+  for (i=0; i<s2len; i++){
     printf ("\t\ts2[%d]=%c(%d)\n", i, s2[i], s2[i]);
   }
 
 	/* To traverse a char array with pointer. */
 	printf ("/////////////// Traverse/visit each indices/itme with pointer\n");
-	int i;
   printf ("print each char of an array by pointer\n");
   char *t=s1;
   for (i=0; i<s1len; t++, i++){
@@ -137,7 +138,8 @@ void howtoArray (){
 	/* This is how printf works. */
 	printf ("/////////////// Kind of printf, how it works\n");
   printf ("This is how it prints a string (== char array)\n\t");
-  for (char *t=&s2[0];;t++){
+	t=&s2[0]; // char *t is declared above
+  for (;;t++){
     printf ("%c", *t);
     if (*t == 0x00){
       break;
@@ -259,7 +261,7 @@ int myAtoI (char *x){
 #ifdef DEBUG
 	char *FNAME="myAtoI@tt.c";
 #endif
-	int t=0, ret=0, len=strlen(x);
+	int t=0, ret=0, i=0, n=0, len=strlen(x);
 	if (len < 1){
 		return -1;
 	}
@@ -268,7 +270,7 @@ int myAtoI (char *x){
 #endif
 
 	/* Traverse a string in reverse order. */
-	for(int i=len-1, n=1; i>-1; i--){
+	for(i=len-1, n=1; i>-1; i--){
 		if ((t = charToInt(x[i])) < 0){
 			return -1;
 		}
@@ -410,13 +412,13 @@ void howtoChar (){
 
 int main (int argc, char **argv){
   /* Print out each argument. */
-  printArgs(argc, argv);
+  //printArgs(argc, argv);
 
   /* Test array. */
 	//howtoArray();
 
 	/* Let's get used to char array aka string. */
-	//howtoChar();
+	howtoChar();
 
   return 1;
 }
