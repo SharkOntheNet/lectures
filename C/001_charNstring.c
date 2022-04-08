@@ -4,7 +4,7 @@
 #include <stdlib.h> 		/* atoi */
 
 /*
- * This is a lecture for SW Lee written by me, daddy.
+ * This is a lecture for SW Lee written by me, daddy / leeswdaddy@gmail.com
  * Contents: char, char array == string, how to handle them and
  * When printArgs is enabled, try command like
  * ./tt adfadf "adkfadlsfjdf akadjlfj lafjdkf"
@@ -22,7 +22,7 @@ void printArgs (int argc, char **argv){
   /* Print out arguments count */
   printf ("argc=%d\n", argc);
 
-  /* Print out out each argument */
+  /* Print out each argument */
   for (int i=0; i<argc; i++){
 		/* strlen returns size_t type number, int x=strlen(s) is Ok, but printf needs %zd or %zu */
     printf ("argv[%d] => \"%s\" (len=>%zu)\n", i, argv[i], strlen(argv[i]));
