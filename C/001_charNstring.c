@@ -10,8 +10,8 @@
  * ./tt adfadf "adkfadlsfjdf akadjlfj lafjdkf"
  * ./tt adflkjaldfj abcd"   "efg' 'xxx XX
  * #ifdef DEBUG to enable or disable debug messages, commands are below
- * enable: 	gcc -o tt tt.c -D DEBUG
- * disable:	gcc -o tt tt.c
+ * enable: 	gcc -o tt 001_charNstring.c -D DEBUG
+ * disable:	gcc -o tt 001_charNstring.c
  */
 
 
@@ -231,7 +231,6 @@ void howtoArray (){
 		printf ("changeArrayValues error\n");
 	}
 	printf ("after changeArrayValues: carray=>\"%s\", darray=>%d,%d,%d,%d,%d\n", carray, darray[0], darray[1], darray[2], darray[3], darray[4]);
-	
 }
 
 /*
@@ -240,7 +239,7 @@ void howtoArray (){
  */
 int charToInt (char x){
 #ifdef DEBUG
-	char *FNAME="charToInt@tt.c";
+	char *FNAME="charToInt@001_charNstring.c";
 #endif
 	/* Not a number letter */
 #ifdef DEBUG
@@ -259,7 +258,7 @@ int charToInt (char x){
  */
 int myAtoI (char *x){
 #ifdef DEBUG
-	char *FNAME="myAtoI@tt.c";
+	char *FNAME="myAtoI@001_charNstring.c";
 #endif
 	int t=0, ret=0, i=0, n=0, len=strlen(x);
 	if (len < 1){
@@ -344,7 +343,7 @@ void howtoChar (){
 	else if (k >= 65 && k <= 90){
 		printf ("** \'%c\' is an captial letter (%c:%u)\n", k, k,k);
 	}
-	else if (k >= 48 && k <= 49){
+	else if (k >= 48 && k <= 57){
 		printf ("** \'%c\' is a number letter (%c:%d)\n", k, k,k);
 	}
 	else{
@@ -374,7 +373,6 @@ void howtoChar (){
 	u_int8_t tx[8] = {97, 98, 99, 100, 101, 102, 103, 0};
 	printf ("3rd: u_int8_t array=> \t%s\n", tx);
 
-
 	/*
 	 * When you get a number letter, you may want to convert it into an integer.
 	 * This can be done by a function from a standard C library, its name is atoi.
@@ -386,6 +384,8 @@ void howtoChar (){
 	printf ("number char \'%c\' => into integer %d\n", tn, atoi(&tn));
 	char ttn[3] = {'1', '2', 0x00};
 	printf ("number string \'%s\' with ttn => into integer %d\n", ttn, atoi(ttn));
+	printf ("address of ttn is exactly the same as the address of ttn[0]\n");
+	printf ("\tttn=>%p, &ttn[0]=>%p\n", ttn, &ttn[0]);
 	printf ("number string \'%s\' with &ttn[0]=> into integer %d\n", ttn, atoi(&ttn[0]));
 
 	/* myAtoI (char *) using charToInt (char) */
@@ -394,7 +394,6 @@ void howtoChar (){
 	printf ("\'%c\' => charToInt (char) => %d\n", n, charToInt(n));
 	char *ns = "567";
 	printf ("\"%s\" => myAtoI (char *) => %d\n", ns, myAtoI(ns));
-
 
 	/*
  	 * Sometimes you may want to call a function with an address of a char or int.
