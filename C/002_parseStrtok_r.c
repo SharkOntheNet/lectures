@@ -65,13 +65,21 @@ int main (int argc, char **argv){
 	printArgs (argc, argv);
 
 	/* Check args */
-	if (argc != 2){
+	if (argc < 2){
 		usage (argv[0]);
 		return 0;
 	}
 
 	/* Parse an string */
-	useStrtok_r (argv[1]);
+	int i=0;
+	for (i=1; i<argc; i++){
+		useStrtok_r (argv[i]);
+	}
+
+	/* Print out args again */
+	printArgs (argc, argv);
 
 	return 1;
 }
+
+
