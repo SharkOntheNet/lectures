@@ -9,8 +9,6 @@
  * Now, we're going to use it practically.
  */
 
-/* I'm thinking about make two files, 002_parseStrtok_r.c 002_parseGetopt.c */
-
 /*
  * Print out command line arguments
  */
@@ -20,16 +18,6 @@ void printArgs (int argc, char **argv){
 	for (i=0; i<argc; i++){
 		printf ("argv[%d]=>\"%s\"\n", i, argv[i]);
 	}
-}
-
-/*
- * Get a string to parse and a delimiter.
- * Print out parsed tokens(strings).
- * Using strtok_r in string.h
- * https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/topic/s/strtok_r.html
- */
-int useStrtok_r (char *x){
-	return 1;
 }
 
 /*
